@@ -1,4 +1,5 @@
 //function is two step function
+//syntax for function is called function declaration
 //define
 function grumpus(){
     console.log('uh..you again...');
@@ -223,4 +224,125 @@ findLargest(5,8);
             const PanGram = isPangram('the quick brown fox jumps over  dog'); //FALSE
             console.log(PanGram);
 
+     //SCOPE
+     //variable visibility
+
+            //FUNCTION SCOPE
+            function helpMe(){
+                let msg = "I'm on fire!";
+                console.log(msg);
+                
+            }
+            
+
+            let bird = 'mandarin duck';
+            function birdWatch(){
+                let bird = 'golden pheasant';
+                console.log(bird);
+            }
+            console.log(bird);
+            birdWatch();
+            
+            //BLOCK SCOPE
+            let radius = 8;
+            if(radius > 0){
+                const pI = 3.14;
+                let circ = 2*pI *radius;
+                console.log(circ);
+
+            }
+
+            //LEXICAL SCOPE
+  //refers to the fact that nested functions are bound to the parent function
+  //are only available in parent function          
+            function outer(){
+                let hero = 'black panther';
+                console.log(hero);
+                function inner(){
+                    let cryForHelp =`${hero}, please save me!`
+                    console.log(cryForHelp);
+                }
+                inner();
+            }
+            outer();
+
+            function outter(){
+                let movie = 'accident man';//available across the whole function
+                 function innerr (){
+                     let movie = 'shooter';//available only inside the nested
+                     console.log(movie.toUpperCase());
+
+                    //more nesting
+                    function extras(){
+                        console.log(movie.toUpperCase());//looks for the nearset nested movie function.
+                    }
+                    extras();
+                 }
+                 innerr();
+                
+            }
+            outter();
+
+            //method 2 of declaring function is called function expresion
+const squarre = function (num){
+    return num*num;
+    // console.log(squarre);
+}
+ console.log(squarre(7));
+// reasons why functions are stored in a variable
+ //
+
+ //HIGHER ORDER FUNCTIOnNS
+     //-operate on/wth other functions
+     //-they can:-
+                  //-accept other functions as arguments
+                  //-return othr functions.
+function callTwice(func){
+   func();
+   func();
+};
+function laugh(){
+    console.log('hahaha');
+};
+callTwice(laugh);
+//returns functions
+function makeBetweenFunc(min,max){
+    return function (val){
+    return val >= min && val <= max;
+    }
+}
+const inAgeRange = makeBetweenFunc(18,100);
+console.log(inAgeRange(17));
+console.log(inAgeRange(68));
+
+     //callback functions.
+//a function passed into another function as an argument,
+//which is then invoked inside the outer function.
+    //HOISTING 
+   // variables declared
+
+
+{
+   var X = 1;
+};
+console.log(X);
+
+console.log(sqquare(5));
+function sqquare(m){
+    return m*m
+};
+console.log(animal);
+var animal = 'lion';
+console.log(animal);
+
+//automatic rpt function a certain number of times
+function rage(){
+    console.log('i hate everything');
+};
+function rptNTimes(action, num){
+    for(let i = 0; i < num; i++){
+        action();
+    }
+}
+rptNTimes(rage, 13);
 
